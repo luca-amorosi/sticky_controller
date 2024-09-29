@@ -1,13 +1,14 @@
 from __future__ import annotations
 
+import json
 import functools
 import itertools
 from pathlib import Path
-from typing import Iterable
-
-from sticky_controller import log
+from typing import Iterable, Any
 
 from maya import cmds
+
+from sticky_controller import log
 
 
 def get_package_root() -> Path:
@@ -15,6 +16,34 @@ def get_package_root() -> Path:
     :returns str: Path of ".../rig" package.
     """
     return Path(__file__).parents[2]
+
+
+def get_resource(string: str | Path) -> Path:
+    """Returns ".../package_root/resources/<string>"."""
+    directory = get_package_root().joinpath("resources", string)
+    if not directory.exists():
+        raise NotADirectoryError(f"Directory -{directory}- doesn't exist !")
+    return directory
+
+
+def deserialize(path: str | Path) -> Any:
+    """Deserialize file and returns data.
+
+    :param path: Full path of file without extension (Considered as ".json").
+
+    :return: Data.
+
+    :raise NotADirectoryError: If directory does not exist.
+    """
+    json_file = path if Path(path).suffix == ".json" else Path(f"{path}.json")
+
+    if not Path(json_file).exists():
+        raise NotADirectoryError(f"Directory -{json_file}- does not exists !")
+
+    with open(json_file) as f:
+        data = json.load(f)
+
+    return data
 
 
 def undoable(function: callable):
