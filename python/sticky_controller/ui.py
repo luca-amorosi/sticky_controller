@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+
 from PySide2.QtCore import Qt
 from PySide2.QtGui import QIcon, QPalette, QColor
 from PySide2.QtWidgets import (
+    QDialog,
     QTreeWidget,
     QVBoxLayout,
     QWidget,
@@ -12,15 +14,23 @@ from PySide2.QtWidgets import (
     QInputDialog,
     QPushButton,
     QHBoxLayout,
+    QLineEdit,
+    QTreeWidgetItemIterator,
 )
+import shiboken2
 
 from maya import cmds
+from maya.OpenMayaUI import MQtUtil
 
-from sticky_controller import utils, sticky_core
-from sticky_controller import ui_utils
+from sticky_controller import utils, core
 
 
-class StickyUi(QWidget):
+def maya_main_window() -> QWidget:
+    """Returns maya mainWindow as a QWidget."""
+    return shiboken2.wrapInstance(int(MQtUtil.mainWindow()), QWidget)
+
+
+class StickyUi(QDialog):
     UI_NAME = "Stickies"
 
     def __init__(self):
@@ -35,24 +45,31 @@ class StickyUi(QWidget):
         self.fill_ui()
 
     def build_ui(self):
+        # Widgets.
         create_btn = QPushButton("Create")
-        create_btn.setIcon(ui_ut.get_icon("sticky"))
+        create_btn.setIcon(
+            QIcon(f"{utils.get_package_root()}/icons/sticky.png")
+        )
         refresh_btn = QPushButton("Reload")
         refresh_btn.setIcon(QIcon(":refresh.png"))
         self.tree = StickyTree()
-        filter_le = FilterLineEdit(self.tree)
-        filter_le.setPlaceholderText("Search for Sticky name")
+        self.filter_le = QLineEdit()
+        self.filter_le.setPlaceholderText("Search for Sticky name")
+        self.filter_le.setClearButtonEnabled(True)
 
+        # Layout.
         btn_layout = QHBoxLayout()
         btn_layout.setContentsMargins(0, 0, 0, 0)
         btn_layout.addWidget(create_btn)
         btn_layout.addWidget(refresh_btn)
         self.main_layout.addLayout(btn_layout)
-        self.main_layout.addWidget(filter_le)
+        self.main_layout.addWidget(self.filter_le)
         self.main_layout.addWidget(self.tree)
 
         # Connections.
-        create_btn.pressed.connect(sticky_main.run_create_sticky)
+        self.filter_lie.textChanged.connect(self.filter_items)
+        # Tree.
+        create_btn.pressed.connect(core.run_create_sticky)
         refresh_btn.pressed.connect(self.fill_ui)
         self.tree.select_controllers_act.triggered.connect(
             self.select_controllers
@@ -155,7 +172,7 @@ class StickyUi(QWidget):
         ctrls_pos = utils.reset_controllers_position(
             [item.slide_ctrl, item.ctrl]
         )
-        sticky_core.add_geometries_to_soft_mod(item.soft_mod, geometries)
+        core.add_geometries_to_soft_mod(item.soft_mod, geometries)
         utils.apply_controllers_position(ctrls_pos)
 
         item.update_display()
@@ -184,7 +201,7 @@ class StickyUi(QWidget):
         if not geometries:
             return
 
-        sticky_core.remove_geometries_from_soft_mod(item.soft_mod, geometries)
+        core.remove_geometries_from_soft_mod(item.soft_mod, geometries)
 
         item.update_display()
 
@@ -279,6 +296,14 @@ class StickyTree(QTreeWidget):
         self.menu.addAction(self.remove_deformed_geometries_act)
         self.menu.addSeparator()
         self.menu.addAction(self.delete_act)
+
+    def filter_items(self, text: str):
+        """Hide all items of tree which do not have given text their name."""
+        tree_it = QTreeWidgetItemIterator(self, QTreeWidgetItemIterator.All)
+        while tree_it.value():
+            item = tree_it.value()
+            item.setHidden(not text.lower() in item.text(0).lower())
+            tree_it += 1
 
 
 class StickyItem(QTreeWidgetItem):

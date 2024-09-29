@@ -2,8 +2,41 @@ from __future__ import annotations
 
 import functools
 import itertools
+from pathlib import Path
 
 from sticky_controller import log
+
+from maya import cmds
+
+
+def get_package_root() -> Path:
+    """
+    :returns str: Path of ".../rig" package.
+    """
+    return Path(__file__).parents[2]
+
+
+def undoable(function: callable):
+    """Decorator to create an undo chunk."""
+
+    @functools.wraps(function)
+    def wrapper_function(*args, **kwargs):
+        # Open undoChunk
+        cmds.undoInfo(openChunk=True, chunkName=function.__name__)
+
+        # Run function.
+        try:
+            function(*args, **kwargs)
+        except Exception:
+            log.exception(
+                f"An error has occured while running {function.__name__}",
+                exc_info=True,
+            )
+
+        # Close undoChunk
+        cmds.undoInfo(closeChunk=True, chunkName=function.__name__)
+
+    return wrapper_function
 
 
 def reset_controllers_position(
@@ -36,26 +69,3 @@ def apply_controllers_position(
     """
     for node, pos_data in data.items():
         cmds.xform(node, **pos_data, worldSpace=True)
-
-
-def undoable(function: callable):
-    """Decorator to create an undo chunk."""
-
-    @functools.wraps(function)
-    def wrapper_function(*args, **kwargs):
-        # Open undoChunk
-        cmds.undoInfo(openChunk=True, chunkName=function.__name__)
-
-        # Run function.
-        try:
-            function(*args, **kwargs)
-        except Exception:
-            log.exception(
-                f"An error has occured while running {function.__name__}",
-                exc_info=True,
-            )
-
-        # Close undoChunk
-        cmds.undoInfo(closeChunk=True, chunkName=function.__name__)
-
-    return wrapper_function
