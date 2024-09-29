@@ -22,7 +22,7 @@ import shiboken2
 from maya import cmds
 from maya.OpenMayaUI import MQtUtil
 
-from sticky_controller import log, core, utils
+from sticky_controller import core, utils
 
 
 def maya_main_window() -> QWidget:
@@ -31,7 +31,18 @@ def maya_main_window() -> QWidget:
 
 
 class StickyUi(QDialog):
-    UI_NAME = "Stickies"
+    _instance = None
+
+    @classmethod
+    def show_ui(cls):
+        if not cls._instance:
+            cls._instance = StickyUi()
+
+        if cls._instance.isHidden():
+            cls._instance.show()
+        else:
+            cls._instance.raise_()
+            cls._instance.activateWindow()
 
     def __init__(self):
         super().__init__()
@@ -237,18 +248,7 @@ class StickyUi(QDialog):
 
     @utils.undoable
     def run_create_sticky(self):
-        sel = cmds.ls(selection=True)
-        if not sel or "." not in sel[-1]:
-            log.warning("Please select one vertex !")
-            return
-
-        core.sticky.create(
-            position=cmds.xform(
-                sel[-1], q=True, translation=True, worldSpace=True
-            ),
-            geometry=sel[-1].split(".")[0],
-        )
-
+        core.sticky.create()
         self.fill_ui()
 
 

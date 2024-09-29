@@ -1,9 +1,10 @@
 from maya import cmds
 
-from sticky_controller.core import mesh, controller
+from sticky_controller import utils
+from sticky_controller.core import log, mesh, controller
 
 
-def create(position: tuple[float, float, float], geometry: str):
+def create_sticky(position: tuple[float, float, float], geometry: str):
     """Creates a softMod deformer with a bindPreMatrix setup that allows it to
     deform and follow a mesh without double transformation.
 
@@ -128,6 +129,20 @@ def create(position: tuple[float, float, float], geometry: str):
     # Add main mesh to the sticky.
     add_geometries(soft_mod, [geometry])
     cmds.select(ctrl, replace=True)
+
+
+@utils.undoable
+def create():
+    """Create a stiky controller attached to the last selected vertices."""
+    sel = cmds.ls(selection=True)
+    if not sel or "." not in sel[-1]:
+        log.warning("Please select one vertex !")
+        return
+
+    create_sticky(
+        position=cmds.xform(sel[-1], q=True, translation=True, worldSpace=True),
+        geometry=sel[-1].split(".")[0],
+    )
 
 
 def add_geometries(soft_mod: str, geometries: list[str]):
