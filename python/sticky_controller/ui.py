@@ -22,7 +22,7 @@ import shiboken2
 from maya import cmds
 from maya.OpenMayaUI import MQtUtil
 
-from sticky_controller import utils, core
+from sticky_controller import log, core, utils
 
 
 def maya_main_window() -> QWidget:
@@ -69,7 +69,7 @@ class StickyUi(QDialog):
         # Connections.
         self.filter_lie.textChanged.connect(self.filter_items)
         # Tree.
-        create_btn.pressed.connect(core.run_create_sticky)
+        create_btn.pressed.connect(self.run_create_sticky)
         refresh_btn.pressed.connect(self.fill_ui)
         self.tree.select_controllers_act.triggered.connect(
             self.select_controllers
@@ -174,7 +174,7 @@ class StickyUi(QDialog):
         ctrls_pos = utils.reset_controllers_position(
             [item.slide_ctrl, item.ctrl]
         )
-        core.add_geometries_to_soft_mod(item.soft_mod, geometries)
+        core.sticky.add_geometries(item.soft_mod, geometries)
         utils.apply_controllers_position(ctrls_pos)
 
         item.update_display()
@@ -203,7 +203,7 @@ class StickyUi(QDialog):
         if not geometries:
             return
 
-        core.remove_geometries_from_soft_mod(item.soft_mod, geometries)
+        core.sticky.remove_geometries(item.soft_mod, geometries)
 
         item.update_display()
 
@@ -239,6 +239,22 @@ class StickyUi(QDialog):
         if items:
             sticky_orig = cmds.listRelatives(items[0].slide_ctrl, parent=True)
             cmds.delete(cmds.listRelatives(sticky_orig[0], parent=True)[0])
+        self.fill_ui()
+
+    @utils.undoable
+    def run_create_sticky(self):
+        sel = cmds.ls(selection=True)
+        if not sel or "." not in sel[-1]:
+            log.warning("Please select one vertex !")
+            return
+
+        core.sticky.create(
+            position=cmds.xform(
+                sel[-1], q=True, translation=True, worldSpace=True
+            ),
+            geometry=sel[-1].split(".")[0],
+        )
+
         self.fill_ui()
 
 
