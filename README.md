@@ -8,7 +8,7 @@ Useful for contacts, polish so silhouettes, correct penetrations, ...
 
 ## Installation
 
-Download the repository and place within the scripts directory of your maya
+Download the repository and place it within the scripts directory of your maya
 documents folder.
 
 - Windows: ```C:/Users/username/Documents/maya/scripts```
@@ -26,8 +26,8 @@ button in current activated shelf.
 - Left click on the shelf button.
 - You're done :)
 
-A group called `STICKIES` will be created, you find all your created stickies
-within it.
+A group called `STICKIES` will be created, you will find all your created
+stickies within it.
 
 ### Edit a sticky.
 
@@ -68,13 +68,13 @@ Useful when you have clothes for example.
 Select geometries deformed by the sticky, to quickly know which sticky is
 deforming what, or remove any geometry from the deformed geometries.
 
-#### 6 - Add deformed geometries**.
+#### 6 - Add deformed geometries.
 
 Select one or more geometries and hit the action in the menu. All geometries
 will then be deformed the same way. There is a small "mesh" icon in the Ui with
 a number. It displays how many geometries are deformed by the sticky.
 
-#### 7 - Remove deformed geometries**.
+#### 7 - Remove deformed geometries.
 
 Select the geometries you don't want to be deformed anymore then hit the action
 in the menu. It is easier to select the geometries with the `Select geometries`
