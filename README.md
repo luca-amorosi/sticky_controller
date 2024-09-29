@@ -1,6 +1,5 @@
 # Sticky Controller
 
-
 Autodesk Maya sticky controller for animators.
 
 A controller which is stuck on a selected vertex allowing to deformed one or
@@ -8,8 +7,6 @@ multiple geometries while following the geometry.
 Useful for contacts, polish so silhouettes, correct penetrations, ...
 
 ## Installation
-
----
 
 Download the repository and place within the scripts directory of your maya
 documents folder.
@@ -22,8 +19,6 @@ Drag and drop the `install.py` file in the maya viewport to add the "Sticky"
 button in current activated shelf.
 
 ## Quick start
-
----
 
 ### Create a sticky controller.
 
@@ -90,8 +85,6 @@ action first, to be sure to remove the correct geometries.
 Do I even need to explain ?
 
 ## Contributors
-
----
 
 Arthur Bodart - Luca Amorosi
 
