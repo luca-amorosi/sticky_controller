@@ -85,7 +85,7 @@ class StickyUi(QDialog):
         )
         self.tree.rename_act.triggered.connect(self.rename_sticky)
         self.tree.delete_act.triggered.connect(self.delete_sticky)
-        self.tree.itemClicked.connect(self.enable_sticky)
+        self.tree.itemClicked.connect(enable_sticky)
 
     def fill_ui(self):
         """Fill the tree with all stickies in the scene."""
@@ -124,12 +124,6 @@ class StickyUi(QDialog):
                     "ctrl": radius_sources[0],
                 }
             )
-
-    def enable_sticky(self, item: StickyItem):
-        """If item is checked then its soft mod is enabled."""
-        cmds.setAttr(
-            f"{item.soft_mod}.envelope", item.checkState(0) == Qt.Checked
-        )
 
     def select_controllers(self):
         """Select controllers of selected sticky."""
@@ -256,6 +250,11 @@ class StickyUi(QDialog):
         )
 
         self.fill_ui()
+
+
+def enable_sticky(item: StickyItem):
+    """If item is checked then its soft mod is enabled."""
+    cmds.setAttr(f"{item.soft_mod}.envelope", item.checkState(0) == Qt.Checked)
 
 
 class StickyTree(QTreeWidget):

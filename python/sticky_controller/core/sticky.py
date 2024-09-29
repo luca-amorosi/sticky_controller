@@ -3,7 +3,7 @@ from maya import cmds
 from sticky_controller.core import mesh, controller
 
 
-def create_sticky(position: tuple[float, float, float], geometry: str):
+def create(position: tuple[float, float, float], geometry: str):
     """Creates a softMod deformer with a bindPreMatrix setup that allows it to
     deform and follow a mesh without double transformation.
 
@@ -126,11 +126,11 @@ def create_sticky(position: tuple[float, float, float], geometry: str):
     cmds.parent(grp, stickies_grp)
 
     # Add main mesh to the sticky.
-    add_geometries_to_soft_mod(soft_mod=soft_mod, geometries=[geometry])
-    cmds.select(clear=True)
+    add_geometries(soft_mod, [geometry])
+    cmds.select(ctrl, replace=True)
 
 
-def add_geometries_to_soft_mod(soft_mod: str, geometries: list[str]):
+def add_geometries(soft_mod: str, geometries: list[str]):
     """Add given geometries to the soft mod allowing it to deform multiple
     geometries at once.
 
@@ -140,7 +140,7 @@ def add_geometries_to_soft_mod(soft_mod: str, geometries: list[str]):
     cmds.softMod(soft_mod, edit=True, geometry=geometries)
 
 
-def remove_geometries_from_soft_mod(soft_mod: str, geometries: list[str]):
+def remove_geometries(soft_mod: str, geometries: list[str]):
     """Remove given geometries from the soft mod.
 
     :param soft_mod: Soft mod node to add the geometries on.

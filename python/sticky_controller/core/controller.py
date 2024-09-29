@@ -1,3 +1,5 @@
+from lib2to3.btm_utils import reduce_tree
+
 from maya import cmds
 from maya.api import OpenMaya as om
 
@@ -44,7 +46,9 @@ def create_curve(
     return curve_node
 
 
-def create(name: str, shape_type: str, degree: int = 1, color: str = "yellow"):
+def create(
+    name: str, shape_type: str, degree: int = 1, color: str = "yellow"
+) -> tuple[str, str]:
     """Create a controller with its orig transform.
 
     :param name: Name of the controller.
@@ -72,3 +76,5 @@ def create(name: str, shape_type: str, degree: int = 1, color: str = "yellow"):
         cmds.setAttr(f"{shape}.overrideEnabled", True)
         cmds.setAttr(f"{shape}.overrideRGBColors", True)
         cmds.setAttr(f"{shape}.overrideColorRGB", *COLORS[color])
+
+    return orig, transform
