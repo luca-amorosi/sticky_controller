@@ -3,6 +3,7 @@ from __future__ import annotations
 import functools
 import itertools
 from pathlib import Path
+from typing import Iterable
 
 from sticky_controller import log
 
@@ -37,6 +38,20 @@ def undoable(function: callable):
         cmds.undoInfo(closeChunk=True, chunkName=function.__name__)
 
     return wrapper_function
+
+
+def has_common_members(
+    array_1: Iterable, array_2: Iterable, common_nbr: int = 1
+) -> bool:
+    """For given arrays check if they have at least 1 or more common members.
+
+    :param array_1: Arrays of objects.
+    :param array_2: Arrays of objects.
+    :param common_nbr: Number of common members asked. Default is 1.
+
+    :returns: Bool depending on common members asked.
+    """
+    return len(set(array_1).intersection(set(array_2))) >= common_nbr
 
 
 def reset_controllers_position(
