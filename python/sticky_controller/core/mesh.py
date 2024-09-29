@@ -81,16 +81,13 @@ def get_original_shape(transform: str) -> str:
             return shape
 
 
-def get_deformers(
-    mesh: str, return_name: bool = False, deformer_types: list[str] = None
-) -> list[str] | list[om.MObject]:
+def get_deformers(mesh: str, deformer_types: list[str] = None) -> list[str]:
     """Get all the deformers ordered connected the mesh.
 
     :param mesh: Mesh to get deformers from, must be a fullPathName.
-    :param return_name: Returns names of deformers' name or their MObject.
     :param deformer_types: Only returns deformer of these types.
 
-    :returns: Empty list, or list[str] or list[MObject]
+    :returns: Empty list, or list[str].
     """
     deformer_types = deformer_types or []
     common_types = 1 if not deformer_types else 2
@@ -119,8 +116,30 @@ def get_deformers(
             # deformer even if there are duplicated deformed shapes.
             continue
 
-        node = node if return_name else maya_api.to_mobject(node)
         if node not in deformers:
             deformers.append(node)
 
     return deformers
+
+
+def get_uv_coordinates(
+    position: tuple[float, float, float], geometry: str
+) -> tuple[float, float]:
+    """Get UV coordinates on a geometry based on a transform's world
+    position.
+
+    :param position: Tuple of 3 floats.
+    :param geometry: Shape of geometry to get UV coordinates from.
+
+    :returns: U and V value.
+    """
+    cpom = cmds.createNode("closestPointOnMesh")
+    cmds.setAttr(f"{cpom}.inPosition", *position)
+    cmds.connnectAttr(f"{geometry}.worldMatrix][0]", f"{cpom}.inputMatrix")
+    cmds.connnectAttr(f"{geometry}.worldMesh][0]", f"{cpom}.inMesh")
+    cmds.delete(cpom.name)
+
+    return (
+        cmds.getAttr(f"{cpom}.parameterU"),
+        cmds.getAttr(f"{cpom}.parameterV"),
+    )

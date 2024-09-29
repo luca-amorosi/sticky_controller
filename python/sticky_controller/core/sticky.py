@@ -1,6 +1,6 @@
 from maya import cmds
 
-from sticky_controller.core import mesh
+from sticky_controller.core import mesh, controller
 
 
 def create_sticky(position: tuple[float, float, float], geometry: str):
@@ -12,15 +12,15 @@ def create_sticky(position: tuple[float, float, float], geometry: str):
 
     :returns: SoftMod node.
     """
-    de = mesh.get_deformers(geometry, return_name=True)[0]
+    de = mesh.get_deformers(geometry)[0]
 
     # Build uvPin at specified uv position.
     uvp = f"{geometry}_sticky_uvPin"
     if not cmds.objExists(uvp):
         uvp = cmds.createNode("uvPin", name=uvp)
-    idx = 1
-    if uvp["coordinate"].get_used_indices():
-        idx = uvp["coordinate"].get_used_indices()[-1] + 1
+    # Get free attribute index.
+    used_indexes = cmds.getAttr(f"{uvp}.coordinate", multiIndices=True)
+    idx = int(used_indexes[-1] + 1) if used_indexes else 0
     cmds.setAttr(f"{uvp}.normalAxis", 1)
     shp_def = mesh.get_shape_deformed(geometry)
     shp_orig = mesh.get_original_shape(geometry)
@@ -38,12 +38,10 @@ def create_sticky(position: tuple[float, float, float], geometry: str):
     # Create softMod controllers
     base_orig, base_ctrl = controller.create(
         name=f"{sticky_name}_softMod_slide_ctrl",
-        orig=True,
         shape_type="square_pin",
     )
     orig, ctrl = controller.create(
         name=f"{sticky_name}_softMod_ctrl",
-        orig=True,
         degree=3,
         shape_type="sphere",
         color="red",
