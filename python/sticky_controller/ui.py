@@ -127,7 +127,9 @@ class StickyUi(QDialog):
 
     def enable_sticky(self, item: StickyItem):
         """If item is checked then its soft mod is enabled."""
-        item.soft_mod["envelope"].set(item.checkState(0) == Qt.Checked)
+        cmds.setAttr(
+            f"{item.soft_mod}.envelope", item.checkState(0) == Qt.Checked
+        )
 
     def select_controllers(self):
         """Select controllers of selected sticky."""
