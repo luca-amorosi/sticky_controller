@@ -1,6 +1,5 @@
 # Sticky Controller
 
----
 
 Autodesk Maya sticky controller for animators.
 
