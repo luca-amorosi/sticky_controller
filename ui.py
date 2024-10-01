@@ -45,8 +45,8 @@ class StickyUi(QDialog):
             cls._instance.raise_()
             cls._instance.activateWindow()
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent=maya_main_window()):
+        super().__init__(parent)
 
         self._stickies: list[dict[str, str]] = [
             # {"soft_mod": str, "slide_ctrl": str, "ctrl": str}
