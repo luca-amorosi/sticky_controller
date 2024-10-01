@@ -88,9 +88,9 @@ def create_sticky(position: tuple[float, float, float], geometry: str):
     dcmtx = cmds.createNode("decomposeMatrix", name=f"{sticky_name}_sticky_dm")
     # Connect node network.
     mmtx = cmds.createNode("multMatrix", name=f"{sticky_name}_sticky_mm")
-    cmds.connectAttr(f"{base_ctrl}.worldMatrix][0]", f"{dcmtx}.inputMatrix")
+    cmds.connectAttr(f"{base_ctrl}.worldMatrix[0]", f"{dcmtx}.inputMatrix")
     cmds.connectAttr(
-        f"{base_ctrl}.worldMatrix][0]", f"{soft_mod_handle}.offsetParentMatrix"
+        f"{base_ctrl}.worldMatrix[0]", f"{soft_mod_handle}.offsetParentMatrix"
     )
     cmds.connectAttr(f"{dcmtx}.outputTranslate", f"{soft_mod}.falloffCenter")
     cmds.connectAttr(f"{uvp}.outputMatrix][{idx}]", f"{mmtx}.matrixIn][1]")

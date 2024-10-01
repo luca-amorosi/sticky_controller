@@ -59,9 +59,7 @@ class StickyUi(QDialog):
     def build_ui(self):
         # Widgets.
         create_btn = QPushButton("Create")
-        create_btn.setIcon(
-            QIcon(f"{utils.get_resource("icons")}/sticky.png")
-        )
+        create_btn.setIcon(QIcon(f"{utils.get_resource('icons')}/sticky.png"))
         refresh_btn = QPushButton("Reload")
         refresh_btn.setIcon(QIcon(":refresh.png"))
         self.tree = StickyTree()
