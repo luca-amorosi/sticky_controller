@@ -77,7 +77,7 @@ class StickyUi(QDialog):
         self.main_layout.addWidget(self.tree)
 
         # Connections.
-        self.filter_lie.textChanged.connect(self.filter_items)
+        self.filter_le.textChanged.connect(self.filter_items)
         # Tree.
         create_btn.pressed.connect(self.run_create_sticky)
         refresh_btn.pressed.connect(self.fill_ui)
