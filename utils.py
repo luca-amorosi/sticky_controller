@@ -2,20 +2,19 @@ from __future__ import annotations
 
 import json
 import functools
-import itertools
 from pathlib import Path
 from typing import Iterable, Any
 
 from maya import cmds
 
-from sticky_controller import log
+from core import log
 
 
 def get_package_root() -> Path:
     """
-    :returns str: Path of ".../rig" package.
+    :returns str: Path of ".../sticky_controller" package.
     """
-    return Path(__file__).parents[2]
+    return Path(__file__).parent
 
 
 def get_resource(string: str | Path) -> Path:

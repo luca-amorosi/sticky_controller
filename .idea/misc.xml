@@ -4,7 +4,7 @@
     <option name="cmdArguments" value="--line-length 80" />
     <option name="enabledOnReformat" value="true" />
     <option name="enabledOnSave" value="true" />
-    <option name="sdkName" value="Python 3.7" />
+    <option name="sdkName" value="Maya Python 3.10 (rig)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.7" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Maya Python 3.10 (rig)" project-jdk-type="Python SDK" />
 </project>

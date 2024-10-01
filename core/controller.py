@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from lib2to3.btm_utils import reduce_tree
+import itertools
 
 from maya import cmds
 from maya.api import OpenMaya as om
@@ -60,8 +60,8 @@ def create(
 
     :returns: orig, and controller transforms
     """
-    orig = cmds.creatNode("transform", name=f"{name}_orig")
-    transform = cmds.creatNode("transform", name=name, parent=orig)
+    orig = cmds.createNode("transform", name=f"{name}_orig")
+    transform = cmds.createNode("transform", name=name, parent=orig)
 
     curves_data = utils.deserialize(
         utils.get_resource(f"controller_lib/{shape_type}")

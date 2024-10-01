@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from maya import cmds
-from maya.api import OpenMaya as om
 
 import utils
 
@@ -15,10 +14,10 @@ def get_shape_deformed(transform: str, create: bool = True) -> str | None:
 
     :returns: The deformed shape DagNode or None.
     """
-    shapes = transform.get_shapes(path=True)
+    shapes = cmds.listRelatives(transform, shapes=True, path=True)
     if len(shapes) != 1:
         for shape in shapes:
-            if not shape["intermediateObject"].get():
+            if not cmds.getAttr(f"{shape}.intermediateObject"):
                 return shape
 
     return create_shape_deformed(transform) if create else None
@@ -33,14 +32,14 @@ def create_shape_deformed(transform: str) -> str:
     """
     original_shape = get_original_shape(transform)
 
-    if transform.is_referenced:
-        shape_deformed = f"{transform.name.split(':')[-1]}ShapeDeformed"
-        shape_deformed = transform.duplicate_shape(name=shape_deformed)
+    if cmds.referenceQuery(transform, isNodeReferenced=True):
+        shape_deformed = f"{transform.split(':')[-1]}ShapeDeformed"
+        shape_deformed = duplicate_shape(transform, name=shape_deformed)
     else:
         shape_deformed = original_shape
-        original_shape = transform.duplicate_shape(name=f"{transform}ShapeOrig")
+        original_shape = duplicate_shape(transform, f"{transform}ShapeOrig")
 
-    original_shape["intermediateObject"].set(True)
+    cmds.setAttr(f"{original_shape}.intermediateObject", True)
 
     return shape_deformed
 
@@ -62,15 +61,19 @@ def get_original_shape(transform: str) -> str:
     if not shapes:
         raise RuntimeError(f"Node -{transform}- doesn't have any shape !")
 
-    if transform.is_referenced:
+    if cmds.referenceQuery(transform, isNodeReferenced=True):
         for shape in shapes:
-            if shape.is_referenced:  # Referenced shape is the original shape.
+            if cmds.referenceQuery(shape, isNodeReferenced=True):
+                # Referenced shape is the original shape.
                 return shape
 
     # For non referenced geometries.
     orig_shapes = []
     for shape in shapes:
-        if not shape["inMesh"].inputs():
+        if not cmds.listConnections(
+            f"{shape}.inMesh", source=True, destination=False
+        ):
+            # No input in inMesh attribute means its the original shape.
             orig_shapes.append(shape)
 
     if len(orig_shapes) == 1:
@@ -135,11 +138,24 @@ def get_uv_coordinates(
     """
     cpom = cmds.createNode("closestPointOnMesh")
     cmds.setAttr(f"{cpom}.inPosition", *position)
-    cmds.connnectAttr(f"{geometry}.worldMatrix][0]", f"{cpom}.inputMatrix")
-    cmds.connnectAttr(f"{geometry}.worldMesh][0]", f"{cpom}.inMesh")
+    cmds.connectAttr(f"{geometry}.worldMatrix][0]", f"{cpom}.inputMatrix")
+    cmds.connectAttr(f"{geometry}.worldMesh][0]", f"{cpom}.inMesh")
     cmds.delete(cpom.name)
 
     return (
         cmds.getAttr(f"{cpom}.parameterU"),
         cmds.getAttr(f"{cpom}.parameterV"),
     )
+
+
+def duplicate_shape(transform: str, name: str) -> str:
+    """Duplicates the first shape of transform and parent it directly under
+    it. Returns the new shape.
+    """
+    dup = cmds.duplicate(transform)
+    new_shape = cmds.listRelatives(dup, shapes=True, path=True)[0]
+    new_shape = cmds.rename(new_shape, name)
+    cmds.parent(new_shape, transform, relative=True, shape=True)
+    cmds.delete(dup)
+
+    return new_shape

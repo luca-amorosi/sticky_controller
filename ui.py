@@ -22,9 +22,8 @@ import shiboken2
 from maya import cmds
 from maya.OpenMayaUI import MQtUtil
 
-import core.controller
+from core import controller, sticky
 import utils
-import core
 
 
 def maya_main_window() -> QWidget:
@@ -61,7 +60,7 @@ class StickyUi(QDialog):
         # Widgets.
         create_btn = QPushButton("Create")
         create_btn.setIcon(
-            QIcon(f"{utils.get_package_root()}/icons/sticky.png")
+            QIcon(f"{utils.get_resource("icons")}/sticky.png")
         )
         refresh_btn = QPushButton("Reload")
         refresh_btn.setIcon(QIcon(":refresh.png"))
@@ -178,11 +177,11 @@ class StickyUi(QDialog):
 
         # Reset position of controllers before adding deformed geometries to
         # avoid offset between geos and make them have the same deformation.
-        ctrls_pos = core.controller.reset_controllers_position(
+        ctrls_pos = controller.reset_controllers_position(
             [item.slide_ctrl, item.ctrl]
         )
-        core.sticky.add_geometries(item.soft_mod, geometries)
-        core.controller.apply_controllers_position(ctrls_pos)
+        sticky.add_geometries(item.soft_mod, geometries)
+        controller.apply_controllers_position(ctrls_pos)
 
         item.update_display()
 
@@ -210,7 +209,7 @@ class StickyUi(QDialog):
         if not geometries:
             return
 
-        core.sticky.remove_geometries(item.soft_mod, geometries)
+        sticky.remove_geometries(item.soft_mod, geometries)
 
         item.update_display()
 
@@ -250,7 +249,7 @@ class StickyUi(QDialog):
 
     @utils.undoable
     def run_create_sticky(self):
-        core.sticky.create()
+        sticky.create()
         self.fill_ui()
 
 
