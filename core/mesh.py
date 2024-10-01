@@ -138,8 +138,8 @@ def get_uv_coordinates(
     """
     cpom = cmds.createNode("closestPointOnMesh")
     cmds.setAttr(f"{cpom}.inPosition", *position)
-    cmds.connectAttr(f"{geometry}.worldMatrix][0]", f"{cpom}.inputMatrix")
-    cmds.connectAttr(f"{geometry}.worldMesh][0]", f"{cpom}.inMesh")
+    cmds.connectAttr(f"{geometry}.worldMatrix[0]", f"{cpom}.inputMatrix")
+    cmds.connectAttr(f"{geometry}.worldMesh[0]", f"{cpom}.inMesh")
     cmds.delete(cpom.name)
 
     return (
