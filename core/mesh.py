@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from maya import cmds
 
-import utils
+from sticky_controller import utils
 
 
 def get_shape_deformed(transform: str, create: bool = True) -> str | None:

@@ -7,7 +7,7 @@ from typing import Iterable, Any
 
 from maya import cmds
 
-from core import log
+from sticky_controller.core import log
 
 
 def get_package_root() -> Path:

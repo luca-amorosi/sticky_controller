@@ -22,8 +22,8 @@ import shiboken2
 from maya import cmds
 from maya.OpenMayaUI import MQtUtil
 
-from core import controller, sticky
-import utils
+from sticky_controller.core import controller, sticky
+from sticky_controller import utils
 
 
 def maya_main_window() -> QWidget:

@@ -1,8 +1,7 @@
 from maya import cmds
 
-import utils
-from core import log, mesh
-from core import controller
+from sticky_controller import utils
+from sticky_controller.core import log, mesh, controller
 
 
 def create_sticky(position: tuple[float, float, float], geometry: str):

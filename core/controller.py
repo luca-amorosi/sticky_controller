@@ -5,7 +5,7 @@ import itertools
 from maya import cmds
 from maya.api import OpenMaya as om
 
-import utils
+from sticky_controller import utils
 
 COLORS = {
     "red": [1, 0, 0],
