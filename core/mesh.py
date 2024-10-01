@@ -3,7 +3,7 @@ from __future__ import annotations
 from maya import cmds
 from maya.api import OpenMaya as om
 
-from sticky_controller import utils
+import utils
 
 
 def get_shape_deformed(transform: str, create: bool = True) -> str | None:

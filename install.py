@@ -1,6 +1,6 @@
 from maya import cmds, mel
 
-from sticky_controller import utils
+import utils
 
 
 def onMayaDroppedPythonFile(_):

@@ -1,9 +1,11 @@
+from __future__ import annotations
+
 from lib2to3.btm_utils import reduce_tree
 
 from maya import cmds
 from maya.api import OpenMaya as om
 
-from sticky_controller import utils
+import utils
 
 COLORS = {
     "red": [1, 0, 0],
@@ -78,3 +80,35 @@ def create(
         cmds.setAttr(f"{shape}.overrideColorRGB", *COLORS[color])
 
     return orig, transform
+
+
+def apply_controllers_position(
+    data: dict[str, dict[str, tuple[float, float, float]]]
+):
+    """Apply position data. Replace the controllers at their position before
+    adding or removing deformed geometries.
+    """
+    for node, pos_data in data.items():
+        cmds.xform(node, **pos_data, worldSpace=True)
+
+
+def reset_controllers_position(
+    controllers: list[str],
+) -> dict[str, dict[str, tuple[float, float, float]]]:
+    """Get controllers position, reset there values and returns there stored
+    position.
+    """
+    initial_pos = {}
+    for ctrl in controllers:
+        # Get initial position.
+        xform_flags = {"query": True, "worldSpace": True}
+        initial_pos[ctrl] = {
+            "translation": cmds.xform(ctrl, **xform_flags, translation=True),
+            "rotation": cmds.xform(ctrl, **xform_flags, rotation=True),
+            "scale": cmds.getAttr(f"{ctrl}.scale")[0],
+        }
+        # Reset position to default.
+        for attr in itertools.product("trs", "xyz"):
+            cmds.setAttr(f"{ctrl}.{attr}", 1 if attr[0] == "s" else 0)
+
+    return initial_pos

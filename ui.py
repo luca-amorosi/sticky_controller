@@ -22,7 +22,9 @@ import shiboken2
 from maya import cmds
 from maya.OpenMayaUI import MQtUtil
 
-from sticky_controller import core, utils
+import core.controller
+import utils
+import core
 
 
 def maya_main_window() -> QWidget:
@@ -176,11 +178,11 @@ class StickyUi(QDialog):
 
         # Reset position of controllers before adding deformed geometries to
         # avoid offset between geos and make them have the same deformation.
-        ctrls_pos = utils.reset_controllers_position(
+        ctrls_pos = core.controller.reset_controllers_position(
             [item.slide_ctrl, item.ctrl]
         )
         core.sticky.add_geometries(item.soft_mod, geometries)
-        utils.apply_controllers_position(ctrls_pos)
+        core.controller.apply_controllers_position(ctrls_pos)
 
         item.update_display()
 

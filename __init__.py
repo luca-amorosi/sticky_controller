@@ -1,0 +1,1 @@
+from core.sticky import create
