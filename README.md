@@ -86,5 +86,7 @@ Do I even need to explain ?
 
 ## Contributors
 
-Arthur Bodart - Luca Amorosi
+Arthur Bodart - https://www.linkedin.com/in/arthur-bodart-35a442b8/
+
+Luca Amorosi - https://www.linkedin.com/in/luca-amorosi-234b70184/
 
