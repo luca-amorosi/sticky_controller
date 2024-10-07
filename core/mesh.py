@@ -140,12 +140,11 @@ def get_uv_coordinates(
     cmds.setAttr(f"{cpom}.inPosition", *position)
     cmds.connectAttr(f"{geometry}.worldMatrix[0]", f"{cpom}.inputMatrix")
     cmds.connectAttr(f"{geometry}.worldMesh[0]", f"{cpom}.inMesh")
-    cmds.delete(cpom.name)
+    u = cmds.getAttr(f"{cpom}.parameterU")
+    v = cmds.getAttr(f"{cpom}.parameterV")
+    cmds.delete(cpom)
 
-    return (
-        cmds.getAttr(f"{cpom}.parameterU"),
-        cmds.getAttr(f"{cpom}.parameterV"),
-    )
+    return u, v
 
 
 def duplicate_shape(transform: str, name: str) -> str:
