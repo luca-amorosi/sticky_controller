@@ -43,7 +43,7 @@ def create_curve(
 
     curve_node = om.MDagPath.getAPathTo(curve_mobject).partialPathName()
     if name:
-        cmds.rename(curve_node, name)
+        curve_node = cmds.rename(curve_node, name)
 
     return curve_node
 
@@ -64,7 +64,7 @@ def create(
     transform = cmds.createNode("transform", name=name, parent=orig)
 
     curves_data = utils.deserialize(
-        utils.get_resource(f"controller_lib/{shape_type}")
+        f"{utils.get_resource('controller_lib')}/{shape_type}"
     )
 
     for i, shape_data in enumerate(curves_data):
