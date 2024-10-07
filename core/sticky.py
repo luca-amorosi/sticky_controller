@@ -26,8 +26,8 @@ def create_sticky(position: tuple[float, float, float], geometry: str):
     shp_def = mesh.get_shape_deformed(geometry)
     shp_orig = mesh.get_original_shape(geometry)
     uv = mesh.get_uv_coordinates(position, shp_def)
-    cmds.setAttr(f"{uvp}.coordinate[{idx}][coordinateU]", uv[0])
-    cmds.setAttr(f"{uvp}.coordinate[{idx}][coordinateV]", uv[1])
+    cmds.setAttr(f"{uvp}.coordinate[{idx}].coordinateU", uv[0])
+    cmds.setAttr(f"{uvp}.coordinate[{idx}].coordinateV", uv[1])
     if not cmds.listConnections(
         f"{uvp}.deformedGeometry", source=True, destination=False
     ):
@@ -58,7 +58,7 @@ def create_sticky(position: tuple[float, float, float], geometry: str):
         attributeType="enum",
         enumName="Sticky",
     )
-    cmds.setAttr(channelBox=True)
+    cmds.setAttr(f"{ctrl}.sticky_header", channelBox=True)
     cmds.addAttr(
         ctrl,
         longName="radius",
