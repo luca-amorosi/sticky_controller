@@ -91,9 +91,9 @@ Do I even need to explain ?
 
 ## Authors
 
-Arthur Bodart - [<img alt="linkedin_icon" height="10" src="https://github.com/luca-amorosi/sticky_controller/blob/main/docs/icons/linkedin_icon.png" width="10"/>](https://www.linkedin.com/in/arthur-bodart-35a442b8/)
+Arthur Bodart - [<img alt="linkedin_icon" height="20" src="https://github.com/luca-amorosi/sticky_controller/blob/main/docs/icons/linkedin_icon.png" width="20"/>](https://www.linkedin.com/in/arthur-bodart-35a442b8/)
 
-Luca Amorosi - [<img alt="linkedin_icon" height="10" src="https://github.com/luca-amorosi/sticky_controller/blob/main/docs/icons/linkedin_icon.png" width="10"/>](https://www.linkedin.com/in/luca-amorosi-234b70184/)
+Luca Amorosi - [<img alt="linkedin_icon" height="20" src="https://github.com/luca-amorosi/sticky_controller/blob/main/docs/icons/linkedin_icon.png" width="20"/>](https://www.linkedin.com/in/luca-amorosi-234b70184/)
 
 
 [//]: # (![Alt Text - description of the image]&#40;url to the image you want to include&#41;)
