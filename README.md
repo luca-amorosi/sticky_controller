@@ -84,7 +84,7 @@ Do I even need to explain ?
 
 ## Contributors
 
-Arthur Bodart - https://www.linkedin.com/in/arthur-bodart-35a442b8/
+Arthur Bodart - [![linkedin_icon](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/icons/linkedin_icon.png)](https://www.linkedin.com/in/arthur-bodart-35a442b8/)
 
-Luca Amorosi - https://www.linkedin.com/in/luca-amorosi-234b70184/
+Luca Amorosi - [![linkedin_icon](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/icons/linkedin_icon.png)](https://www.linkedin.com/in/luca-amorosi-234b70184/)
 
