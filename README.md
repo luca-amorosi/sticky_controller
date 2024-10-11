@@ -1,3 +1,5 @@
+[][https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue]
+
 # Sticky Controller
 
 Autodesk Maya sticky controller for animators.
@@ -6,12 +8,11 @@ A controller which is stuck on a selected vertex allowing to deform and follow a
 one or multiple geometries without double transformation. Useful for contacts,
 polishing silhouettes, correct penetrations, ...
 
-
 ## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [Authors](#authors)
-
+- [:desktop_computer: Installation](#installation)
+- [:gear: Usage](#usage)
+- [:seedling: Authors](#authors)
+   
 ## Installation
 
 1) Get a copy of the latest release
@@ -28,7 +29,7 @@ You can either **left-click** on the shelf button to create a sticky on selected
 vertex. Or you can **double left-click** on the shelf button to open a small Ui
 to "edit" the stickies.
 
-TIP: All actions are undoable.
+:fire:` TIP: All actions are undoable.`:fire:
 
 - [Create stickies](#create-stickies)
 - [Display stickies](#display-stickies-of-the-scene)
@@ -61,7 +62,7 @@ does not break the animation.
 #### Select sticky's controllers.
 
 It will select both `slide_ctrl` and `sticky_ctrl`. Pretty useful when you've
-lost it and want to focus your camera on them.
+lost your controllers and want to focus your camera on them.
 
 TIP: You can deform multiple geometries simultaneously with One sticky
 controller.
@@ -86,14 +87,14 @@ in the menu. It is easier to select the geometries with the `Select geometries`
 action first, to be sure to remove the correct geometries.
 
 #### Delete stickies.
-   
+
 Do I even need to explain ?
 
 ## Authors
 
-Arthur Bodart - [<img alt="linkedin_icon" height="20" src="https://github.com/luca-amorosi/sticky_controller/blob/main/docs/icons/linkedin_icon.png" width="20"/>](https://www.linkedin.com/in/arthur-bodart-35a442b8/)
+Arthur Bodart -> [<img alt="linkedin_icon" height="20" src="https://github.com/luca-amorosi/sticky_controller/blob/main/docs/icons/linkedin_icon.png" width="20"/>](https://www.linkedin.com/in/arthur-bodart-35a442b8/)
 
-Luca Amorosi - [<img alt="linkedin_icon" height="20" src="https://github.com/luca-amorosi/sticky_controller/blob/main/docs/icons/linkedin_icon.png" width="20"/>](https://www.linkedin.com/in/luca-amorosi-234b70184/)
+Luca Amorosi -> [<img alt="linkedin_icon" height="20" src="https://github.com/luca-amorosi/sticky_controller/blob/main/docs/icons/linkedin_icon.png" width="20"/>](https://www.linkedin.com/in/luca-amorosi-234b70184/)
 
 
 [//]: # (![Alt Text - description of the image]&#40;url to the image you want to include&#41;)
