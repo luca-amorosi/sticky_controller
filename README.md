@@ -1,4 +1,4 @@
-[][https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue]
+<img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue" />
 
 # Sticky Controller
 
@@ -9,9 +9,9 @@ one or multiple geometries without double transformation. Useful for contacts,
 polishing silhouettes, correct penetrations, ...
 
 ## Table of Contents
-- [:desktop_computer: Installation](#-installation)
-- [:gear: Usage](#usage)
-- [:seedling: Authors](#authors)
+- [:desktop_computer: Installation](#-installation-)
+- [:gear: Usage](#-usage-)
+- [:seedling: Authors](#-authors-)
    
 ## :desktop_computer: Installation
 
@@ -23,7 +23,7 @@ polishing silhouettes, correct penetrations, ...
 3) Drag and drop the `scripts/install.py` file in the maya viewport to add the "Sticky"
 button in current activated shelf.
 
-## Usage
+## :gear: Usage
 
 You can either **left-click** on the shelf button to create a sticky on selected
 vertex. Or you can **double left-click** on the shelf button to open a small Ui
@@ -90,7 +90,7 @@ action first, to be sure to remove the correct geometries.
 
 Do I even need to explain ?
 
-## Authors
+## :seedling: Authors
 
 Arthur Bodart -> [<img alt="linkedin_icon" height="20" src="https://github.com/luca-amorosi/sticky_controller/blob/main/docs/icons/linkedin_icon.png" width="20"/>](https://www.linkedin.com/in/arthur-bodart-35a442b8/)
 
