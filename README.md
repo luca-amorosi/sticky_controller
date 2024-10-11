@@ -34,23 +34,29 @@ button in current activated shelf.
 
 ## Usage
 
-- [Enable/Disable](#enable-and-disable-stickies)
+- [Create stickies](#create-stickies)
 - [Radius](#radius)
 - [Slide](#slide-controller)
 - [Falloff Mode](#falloff-mode)
 
-### Enable and disable stickies
+---
+### Create stickies
 
-Sticky can be "turn On or Off" by toggling the checkbox in the first colum of the Ui.
+Select one vertex of one geometry and hit the shelf button or the create button
+in the Ui.
+A group called `STICKIES` will be created, you will find all your stickies
+within it.
 
-![](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/images/enable_disable_sticky.gif)
+![](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/images/create_sticky.gif)
 
+---
 ### Radius
 
 The `radius` of the sticky can be changed to determine the area of deformation.
 
 ![](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/images/radius.gif)
 
+---
 ### Slide controller.
 
 Kind of hard to explain, could you watch the gif pwease :raised_hands:
@@ -63,7 +69,7 @@ Kind of hard to explain, could you watch the gif pwease :raised_hands:
 
 ![](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/images/slide_example.gif)
 
-
+---
 ### Falloff mode
 
 - `Volume`: Deformation is based on a 3D volume of a sphere. Every geometry within this "sphere" will be deformed.
@@ -73,7 +79,7 @@ Kind of hard to explain, could you watch the gif pwease :raised_hands:
 
 ![](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/images/falloff_mode.gif)
 
-
+---
 ## Edit sticky
 
 You can either **left-click** on the shelf button to create a sticky on selected
@@ -82,7 +88,7 @@ to "edit" the stickies.
 
 :fire: `TIP: All actions are undoable !`:fire:
 
-- [Create stickies](#create-stickies)
+- [Enable/Disable](#enable-and-disable-stickies)
 - [Rename](#rename-a-sticky)
 - [Select controllers](#select-stickys-controllers)
 - [Select geometries](#select-geometries-deformed-by-the-sticky)
@@ -90,6 +96,7 @@ to "edit" the stickies.
 - [Remove deformed geometries](#remove-deformed-geometries)
 - [Delete stickies](#delete-stickies)
 
+---
 ## User Interface
 
 It has a `Create` button to ... create stickies and `Reload` button to display all stickies currently in the scene. 
@@ -107,21 +114,18 @@ This view also has a **right-click** context menu with different actions to edit
 Version of the tool is also noted in the window title.
 
 ---
-### Create stickies
+### Enable and disable stickies
 
-Select one vertex of one geometry and hit the shelf button or the create button
-in the Ui.
-A group called `STICKIES` will be created, you will find all your stickies
-within it.
+Sticky can be "turn On or Off" by toggling the checkbox in the first colum of the Ui.
 
-![](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/images/create_sticky.gif)
+![](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/images/enable_disable_sticky.gif)
 
 ---
 ### Rename a sticky.
 
 ![](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/images/action_rename.png)
 
-It will open a new window in which you can enter your new name.
+It will open a new window to enter a new name.
 
 :fire:`TIP: Animation are preserved !`:fire:
 
