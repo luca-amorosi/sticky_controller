@@ -40,7 +40,7 @@ class StickyTree(QTreeWidget):
         self.menu = QMenu(self)
 
         self.select_controllers_act = QAction(
-            QIcon(":selectModel.png"), "Select Controllers", parent=self
+            QIcon(":rename.png"), "Select Controllers", parent=self
         )
         self.select_geometries_act = QAction(
             QIcon(":selectSimilar.png"), "Select Geometries", parent=self
