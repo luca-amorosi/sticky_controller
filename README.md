@@ -8,14 +8,12 @@ polishing silhouettes, correct penetrations, ...
 
 ## Installation
 
-Download the repository and place it within the scripts directory of your maya
-documents folder.
-
-- Windows: ```C:/Users/username/Documents/maya/scripts```
-- Mac OS: ```~/Library/Preferences/Autodesk/maya/scripts```
-- Linux: ```~/maya/scripts```
-
-Drag and drop the `install.py` file in the maya viewport to add the "Sticky"
+1) Get a copy of the latest release
+2) Place it within the scripts directory of your maya documents folder.
+   - Windows: ```C:/Users/username/Documents/maya/scripts```
+   - Mac OS: ```~/Library/Preferences/Autodesk/maya/scripts```
+   - Linux: ```~/maya/scripts```
+3) Drag and drop the `scripts/install.py` file in the maya viewport to add the "Sticky"
 button in current activated shelf.
 
 ## Quick start

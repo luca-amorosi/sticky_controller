@@ -19,7 +19,7 @@ def get_package_root() -> Path:
 
 def get_resource(string: str | Path) -> Path:
     """Returns ".../package_root/resources/<string>"."""
-    directory = get_package_root().joinpath("resources", string)
+    directory = get_package_root().joinpath("../../resources", string)
     if not directory.exists():
         raise NotADirectoryError(f"Directory -{directory}- doesn't exist !")
     return directory
