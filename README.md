@@ -1,8 +1,8 @@
 Sticky Controller
 ====
-![GitHub Release](https://img.shields.io/github/v/release/luca-amorosi/sticky_controller)
-![GitHub License](https://img.shields.io/github/license/luca-amorosi/sticky_controller)
 
+![GitHub Release](https://img.shields.io/github/v/release/luca-amorosi/sticky_controller?link=https%3A%2F%2Fgithub.com%2Fluca-amorosi%2Fsticky_controller%2Freleases)
+![GitHub License](https://img.shields.io/github/license/luca-amorosi/sticky_controller?link=https%3A%2F%2Fgithub.com%2Fluca-amorosi%2Fsticky_controller%2Fblob%2Fmain%2FLICENSE)
 
 Autodesk Maya sticky controller for animators.
 
@@ -94,9 +94,8 @@ Do I even need to explain ?
 
 ## :seedling: Authors
 
-Arthur Bodart -> [<img alt="linkedin_icon" height="20" src="https://github.com/luca-amorosi/sticky_controller/blob/main/docs/icons/linkedin_icon.png" width="20"/>](https://www.linkedin.com/in/arthur-bodart-35a442b8/)
+![arthur_profile](https://img.shields.io/badge/Author-Arthur%20Bodart-darkgreen?link=https%3A%2F%2Fwww.linkedin.com%2Fin%2Farthur-bodart-35a442b8%2F)
 
-Luca Amorosi -> [<img alt="linkedin_icon" height="20" src="https://github.com/luca-amorosi/sticky_controller/blob/main/docs/icons/linkedin_icon.png" width="20"/>](https://www.linkedin.com/in/luca-amorosi-234b70184/)
-
+![luca_profile](https://img.shields.io/badge/Author-Luca%20Amorosi-darkgreen?link=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fluca-amorosi-234b70184%2F)
 
 [//]: # (![Alt Text - description of the image]&#40;url to the image you want to include&#41;)
