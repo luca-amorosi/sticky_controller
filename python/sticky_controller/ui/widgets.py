@@ -39,8 +39,10 @@ class StickyTree(QTreeWidget):
         """Create a context menu with constraints."""
         self.menu = QMenu(self)
 
+        self.rename_act = QAction(QIcon(":rename.png"), "Rename", parent=self)
+
         self.select_controllers_act = QAction(
-            QIcon(":rename.png"), "Select Controllers", parent=self
+            QIcon(":selectModel.png"), "Select Controllers", parent=self
         )
         self.select_geometries_act = QAction(
             QIcon(":selectSimilar.png"), "Select Geometries", parent=self
@@ -55,12 +57,10 @@ class StickyTree(QTreeWidget):
             "Remove selected geometries",
             parent=self,
         )
-        self.rename_act = QAction(
-            QIcon(":renamePreset.png"), "Rename", parent=self
-        )
         self.delete_act = QAction(QIcon(":delete.png"), "Delete", parent=self)
 
         self.menu.addAction(self.rename_act)
+        self.menu.addSeparator()
         self.menu.addAction(self.select_controllers_act)
         self.menu.addAction(self.select_geometries_act)
         self.menu.addSeparator()
