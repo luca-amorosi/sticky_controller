@@ -37,7 +37,9 @@ def create_sticky(position: tuple[float, float, float], geometry: str):
     if not cmds.listConnections(
         f"{uvp}.deformedGeometry", source=True, destination=False
     ):
-        cmds.connectAttr(f"{de}.outputGeometry[0]", f"{uvp}.deformedGeometry")
+        cmds.connectAttr(
+            f"{de[0]}.outputGeometry[0]", f"{uvp}.deformedGeometry"
+        )
         cmds.connectAttr(f"{shp_orig}.outMesh", f"{uvp}.originalGeometry")
 
     sticky_name = f"{geometry}_{idx}"
@@ -98,7 +100,7 @@ def create_sticky(position: tuple[float, float, float], geometry: str):
         f"{base_ctrl}.worldMatrix[0]", f"{soft_mod_handle}.offsetParentMatrix"
     )
     cmds.connectAttr(f"{dcmtx}.outputTranslate", f"{soft_mod}.falloffCenter")
-    cmds.connectAttr(f"{uvp}.outputMatrix][{idx}]", f"{mmtx}.matrixIn][1]")
+    cmds.connectAttr(f"{uvp}.outputMatrix[{idx}]", f"{mmtx}.matrixIn[1]")
     cmds.connectAttr(f"{mmtx}.matrixSum", f"{base_orig}.offsetParentMatrix")
     cmds.connectAttr(
         f"{base_ctrl}.worldInverseMatrix[0]", f"{soft_mod}.bindPreMatrix"
