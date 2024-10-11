@@ -6,6 +6,12 @@ A controller which is stuck on a selected vertex allowing to deform and follow a
 one or multiple geometries without double transformation. Useful for contacts,
 polishing silhouettes, correct penetrations, ...
 
+
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Authors](#authors)
+
 ## Installation
 
 1) Get a copy of the latest release
@@ -16,42 +22,43 @@ polishing silhouettes, correct penetrations, ...
 3) Drag and drop the `scripts/install.py` file in the maya viewport to add the "Sticky"
 button in current activated shelf.
 
-## Quick start
+## Usage
 
-### Create a sticky controller.
-
-- Select one vertex of a geometry.
-- Left click on the shelf button.
-- You're done :)
-
-A group called `STICKIES` will be created, you will find all your created
-stickies within it.
-
-### Edit a sticky.
-
-If you **double left-click** on the shelf button a small Ui will pop-up allowing
+You can either **left-click** on the shelf button to create a sticky on selected
+vertex. Or you can **double left-click** on the shelf button to open a small Ui
 to "edit" the stickies.
 
 TIP: All actions are undoable.
 
-#### 1 - Create stickies
+- [Create stickies](#create-stickies)
+- [Display stickies](#display-stickies-of-the-scene)
+- [Rename](#rename-a-sticky)
+- [Select controllers](#select-stickys-controllers)
+- [Select geometries](#select-geometries-deformed-by-the-sticky)
+- [Add deformed geometries](#add-deformed-geometries)
+- [Remove deformed geometries](#remove-deformed-geometries)
+- [Delete stickies](#delete-stickies)
 
-Exactly like with the shelf button. Select one vertex and click on create
-button.
+#### Create stickies
 
-#### 2 - Display stickies of the scene.
+Select one vertex of one geometry and hit the shelf button or the create button
+in the Ui.
+A group called `STICKIES` will be created, you will find all your created
+stickies within it.
+
+#### Display stickies of the scene.
 
 Just hit the `Refresh` button and the Ui will get all stickies in the scene.
 
 TIP: All next steps can be done by right-clicking on the sticky you want in the
 table.
 
-#### 3 - Rename a sticky.
+#### Rename a sticky.
 
 It will open a new window in which you can enter your new name. It preserves
 does not break the animation.
 
-#### 4 - Select sticky's controllers.
+#### Select sticky's controllers.
 
 It will select both `slide_ctrl` and `sticky_ctrl`. Pretty useful when you've
 lost it and want to focus your camera on them.
@@ -61,28 +68,28 @@ controller.
 
 Useful when you have clothes for example.
 
-#### 5 - Select geometries deformed by the sticky.
+#### Select geometries deformed by the sticky.
 
 Select geometries deformed by the sticky, to quickly know which sticky is
 deforming what, or remove any geometry from the deformed geometries.
 
-#### 6 - Add deformed geometries.
+#### Add deformed geometries.
 
 Select one or more geometries and hit the action in the menu. All geometries
 will then be deformed the same way. There is a small "mesh" icon in the Ui with
 a number. It displays how many geometries are deformed by the sticky.
 
-#### 7 - Remove deformed geometries.
+#### Remove deformed geometries.
 
 Select the geometries you don't want to be deformed anymore then hit the action
 in the menu. It is easier to select the geometries with the `Select geometries`
 action first, to be sure to remove the correct geometries.
 
-#### 8 - Delete stickies.
+#### Delete stickies.
    
 Do I even need to explain ?
 
-## Contributors
+## Authors
 
 Arthur Bodart - [![linkedin_icon](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/icons/linkedin_icon.png)](https://www.linkedin.com/in/arthur-bodart-35a442b8/)
 
