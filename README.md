@@ -79,7 +79,7 @@ in the menu. It is easier to select the geometries with the `Select geometries`
 action first, to be sure to remove the correct geometries.
 
 #### 8 - Delete stickies.
-
+   
 Do I even need to explain ?
 
 ## Contributors
