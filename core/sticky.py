@@ -13,7 +13,13 @@ def create_sticky(position: tuple[float, float, float], geometry: str):
 
     :returns: SoftMod node.
     """
-    de = mesh.get_deformers(geometry)[0]
+    de = mesh.get_deformers(geometry)
+    if not de:
+        log.warning(
+            f"Geometry -{geometry}- does not have any deformer, "
+            "we can't add a sticky controller to it !"
+        )
+        return
 
     # Build uvPin at specified uv position.
     uvp = f"{geometry}_sticky_uvPin"

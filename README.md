@@ -2,9 +2,9 @@
 
 Autodesk Maya sticky controller for animators.
 
-A controller which is stuck on a selected vertex allowing to deformed one or
-multiple geometries while following the geometry.
-Useful for contacts, polish so silhouettes, correct penetrations, ...
+A controller which is stuck on a selected vertex allowing to deform and follow a
+one or multiple geometries without double transformation. Useful for contacts,
+polishing silhouettes, correct penetrations, ...
 
 ## Installation
 
