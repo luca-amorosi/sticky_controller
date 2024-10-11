@@ -115,7 +115,7 @@ class StickyUi(QDialog):
         self._stickies.clear()
 
         for soft_mod in cmds.ls(type="softMod"):
-            slide_ctrl, ctrl = self.get_sticky_controllers(soft_mod)
+            slide_ctrl, ctrl = sticky.get_sticky_controllers(soft_mod)
             if not slide_ctrl and not ctrl:
                 continue
 
@@ -126,25 +126,6 @@ class StickyUi(QDialog):
                     "ctrl": ctrl,
                 }
             )
-
-    def get_sticky_controllers(
-        self, soft_mod: str
-    ) -> tuple[str | None, str | None]:
-        """Returns the slide_ctrl and the controller associated to given softmod
-        deformer. If softmod is not a "sticky" returns None, None.
-        """
-        bind_pre_mtx_sources = cmds.listConnections(
-            f"{soft_mod}.bindPreMatrix", source=True, destination=False
-        )
-        radius_sources = cmds.listConnections(
-            f"{soft_mod}.falloffRadius", source=True, destination=False
-        )
-
-        if bind_pre_mtx_sources and radius_sources:
-            # Is a sticky if it has connection in bindPreMatrix and radius.
-            return bind_pre_mtx_sources[0], radius_sources[0]
-
-        return None, None
 
     def select_controllers(self):
         """Select controllers of selected sticky."""
@@ -245,7 +226,7 @@ class StickyUi(QDialog):
         cmds.rename(sticky_root, sticky_root.replace(base_name, new_name))
 
         # Reassign slide_ctrl and ctrl to the StickyItem properties.
-        slide_ctrl, ctrl = self.get_sticky_controllers(item.soft_mod)
+        slide_ctrl, ctrl = sticky.get_sticky_controllers(item.soft_mod)
         item.slide_ctrl = slide_ctrl
         item.ctrl = ctrl
 

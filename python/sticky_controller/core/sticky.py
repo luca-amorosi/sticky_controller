@@ -170,3 +170,21 @@ def remove_geometries(soft_mod: str, geometries: list[str]):
     :param geometries: Geometries to be removed from the soft mod.
     """
     cmds.softMod(soft_mod, edit=True, remove=True, geometry=geometries)
+
+
+def get_sticky_controllers(soft_mod: str) -> tuple[str | None, str | None]:
+    """Returns the slide_ctrl and the controller associated to given softmod
+    deformer. If softmod is not a "sticky" returns None, None.
+    """
+    bind_pre_mtx_sources = cmds.listConnections(
+        f"{soft_mod}.bindPreMatrix", source=True, destination=False
+    )
+    radius_sources = cmds.listConnections(
+        f"{soft_mod}.falloffRadius", source=True, destination=False
+    )
+
+    if bind_pre_mtx_sources and radius_sources:
+        # Is a sticky if it has connection in bindPreMatrix and radius.
+        return bind_pre_mtx_sources[0], radius_sources[0]
+
+    return None, None
