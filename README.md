@@ -9,11 +9,11 @@ one or multiple geometries without double transformation. Useful for contacts,
 polishing silhouettes, correct penetrations, ...
 
 ## Table of Contents
-- [:desktop_computer: Installation](#installation)
+- [:desktop_computer: Installation](#-installation)
 - [:gear: Usage](#usage)
 - [:seedling: Authors](#authors)
    
-## Installation
+## :desktop_computer: Installation
 
 1) Get a copy of the latest release
 2) Place it within the scripts directory of your maya documents folder.
