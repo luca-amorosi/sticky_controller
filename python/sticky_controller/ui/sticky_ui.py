@@ -143,9 +143,7 @@ class StickyUi(QDialog):
         """Select controllers of selected sticky."""
         items = self.tree.selectedItems()
         if items:
-            cmds.select(
-                [geo.name for geo in items[0].deformed_geometries], replace=True
-            )
+            cmds.select(items[0].deformed_geometries, replace=True)
 
     @utils.undoable
     def add_deformed_geometries(self):
