@@ -1,6 +1,8 @@
-<img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue" />
+Sticky Controller
+====
+![GitHub Release](https://img.shields.io/github/v/release/luca-amorosi/sticky_controller)
+![GitHub License](https://img.shields.io/github/license/luca-amorosi/sticky_controller)
 
-# Sticky Controller
 
 Autodesk Maya sticky controller for animators.
 
@@ -9,11 +11,11 @@ one or multiple geometries without double transformation. Useful for contacts,
 polishing silhouettes, correct penetrations, ...
 
 ## Table of Contents
-- [:desktop_computer: Installation](#-installation-)
-- [:gear: Usage](#-usage-)
-- [:seedling: Authors](#-authors-)
-   
-## :desktop_computer: Installation
+- [:desktop_computer: Installation](#installation)
+- [:gear: Usage](#usage)
+- [:seedling: Authors](#authors)
+
+## Installation 
 
 1) Get a copy of the latest release
 2) Place it within the scripts directory of your maya documents folder.
@@ -23,13 +25,13 @@ polishing silhouettes, correct penetrations, ...
 3) Drag and drop the `scripts/install.py` file in the maya viewport to add the "Sticky"
 button in current activated shelf.
 
-## :gear: Usage
+## Usage 
 
 You can either **left-click** on the shelf button to create a sticky on selected
 vertex. Or you can **double left-click** on the shelf button to open a small Ui
 to "edit" the stickies.
 
-:fire:` TIP: All actions are undoable.`:fire:
+:fire:`All actions are undoable.`:fire:
 
 - [Create stickies](#create-stickies)
 - [Display stickies](#display-stickies-of-the-scene)
