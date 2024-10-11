@@ -14,7 +14,14 @@ A controller which is stuck on a selected vertex allowing to deform and follow a
 one or multiple geometries without double transformation. Useful for contacts,
 polishing silhouettes, correct penetrations, ...
 
-## :desktop_computer: Installation 
+## Table of contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Edit Sticky](#edit-sticky)
+
+
+## Installation
 
 1) :minidisc: Get a copy of the [latest release](http://github.com/luca-amorosi/sticky_controller/releases)
 2) :open_file_folder: Place it within the scripts directory of your maya documents folder.
@@ -25,7 +32,49 @@ polishing silhouettes, correct penetrations, ...
 button in current activated shelf.
 
 
-## :gear: Tools 
+## Usage
+
+- [Enable/Disable](#enable-and-disable-stickies)
+- [Radius](#radius)
+- [Slide](#slide-controller)
+- [Falloff Mode](#falloff-mode)
+
+### Enable and disable stickies
+
+Sticky can be "turn On or Off" by toggling the checkbox in the first colum of the Ui.
+
+![](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/images/enable_disable_sticky.gif)
+
+### Radius
+
+The `radius` of the sticky can be changed to determine the area of deformation.
+
+![](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/images/radius.gif)
+
+### Slide controller.
+
+Kind of hard to explain, could you watch the gif pwease :raised_hands:
+
+![](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/images/sliding_sticky.gif)
+
+:warning:`Moving too far away the slide_ctrl from the base point (where the sticky was initially created) will cause weird behaviors while moving the main controller !`:warning:
+
+:fire:`TIP: Very usefull to simulate contacts, a finger tip on a cheek for example ! While the sticky_ctrl is deforming the cheek, you can constraint the slide_ctrl to the finger tip`:fire:
+
+![](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/images/slide_example.gif)
+
+
+### Falloff mode
+
+- `Volume`: Deformation is based on a 3D volume of a sphere. Every geometry within this "sphere" will be deformed.
+- `Surface`: Deformation is based on a region that conforms to the contours/edges of the geometry's surface.
+
+:fire:`TIP: "Surface" mode is usefull to separate the upper lip from the bottom lip on a character's face !`:fire:
+
+![](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/images/falloff_mode.gif)
+
+
+## Edit sticky
 
 You can either **left-click** on the shelf button to create a sticky on selected
 vertex. Or you can **double left-click** on the shelf button to open a small Ui
@@ -128,42 +177,3 @@ in the menu.
 Do I even need to explain :upside_down_face: ?
 
 :fire:`All actions are undoable !`:fire:
-
-
-## :gear: Usage
-
-### Enable and disable stickies
-
-Sticky can be "turn On or Off" by toggling the checkbox in the first colum of the Ui.
-
-![](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/images/enable_disable_sticky.gif)
-
-### Radius
-
-The `radius` of the sticky can be changed to determine the area of deformation.
-
-![](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/images/radius.gif)
-
-### Slide controller.
-
-Kind of hard to explain, could you whatch the gif pwease :raised_hands:  
-
-![](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/images/radius.gif)
-
-:warning:`Moving too far away the slide_ctrl from the base point (where the sticky was initially created) will cause weird behaviors while moving the main controller !`:warning:
-
-:fire:`TIP: Very usefull to simulate contacts, a finger tip on a cheek for example ! While the sticky_ctrl is deforming the cheek, you can constraint the slide_ctrl to the finger tip`:fire:
-
-![](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/images/slide_example.gif)
-
-
-### Falloff mode
-
-- `Volume`: Deformation is based on a 3D volume of a sphere. Every geometry within this "sphere" will be deformed.
-- `Surface`: Deformation is based on a region that conforms to the contours/edges of the geometry's surface.
-
-:fire:`TIP: "Surface" mode is usefull to separate the upper lip from the bottom lip on a character's face !`:fire:
-
-![](https://github.com/luca-amorosi/sticky_controller/blob/main/docs/images/falloff_mode.gif)
-
-
