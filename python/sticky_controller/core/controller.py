@@ -108,7 +108,7 @@ def reset_controllers_position(
             "scale": cmds.getAttr(f"{ctrl}.scale")[0],
         }
         # Reset position to default.
-        for attr in itertools.product("trs", "xyz"):
-            cmds.setAttr(f"{ctrl}.{attr}", 1 if attr[0] == "s" else 0)
+        for attr, axis in itertools.product("trs", "xyz"):
+            cmds.setAttr(f"{ctrl}.{attr}{axis}", 1 if attr == "s" else 0)
 
     return initial_pos
