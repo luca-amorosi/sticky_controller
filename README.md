@@ -1,19 +1,18 @@
 Sticky Controller
 ====
 
-![GitHub Release](https://img.shields.io/github/v/release/luca-amorosi/sticky_controller?link=https%3A%2F%2Fgithub.com%2Fluca-amorosi%2Fsticky_controller%2Freleases)
-![GitHub License](https://img.shields.io/github/license/luca-amorosi/sticky_controller?link=https%3A%2F%2Fgithub.com%2Fluca-amorosi%2Fsticky_controller%2Fblob%2Fmain%2FLICENSE)
+[![GitHub Release](https://img.shields.io/github/v/release/luca-amorosi/sticky_controller)](http://github.com/luca-amorosi/sticky_controller/releases)
+[![GitHub License](https://img.shields.io/github/license/luca-amorosi/sticky_controller)](https://github.com/luca-amorosi/sticky_controller/blob/main/LICENSE)
+
+[![arthur_bodart](https://img.shields.io/badge/Author-Arthur%20Bodart-darkgreen)](https://www.linkedin.com/in/arthur-bodart-35a442b8/)
+[![luca_amorosi](https://img.shields.io/badge/Author-Luca%20Amorosi-darkgreen)](https://www.linkedin.com/in/luca-amorosi-234b70184/)
+
 
 Autodesk Maya sticky controller for animators.
 
 A controller which is stuck on a selected vertex allowing to deform and follow a
 one or multiple geometries without double transformation. Useful for contacts,
 polishing silhouettes, correct penetrations, ...
-
-## Table of Contents
-- [:desktop_computer: Installation](#installation)
-- [:gear: Usage](#usage)
-- [:seedling: Authors](#authors)
 
 ## Installation 
 
@@ -93,9 +92,5 @@ action first, to be sure to remove the correct geometries.
 Do I even need to explain ?
 
 ## :seedling: Authors
-
-![arthur_profile](https://img.shields.io/badge/Author-Arthur%20Bodart-darkgreen?link=https%3A%2F%2Fwww.linkedin.com%2Fin%2Farthur-bodart-35a442b8%2F)
-
-![luca_profile](https://img.shields.io/badge/Author-Luca%20Amorosi-darkgreen?link=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fluca-amorosi-234b70184%2F)
 
 [//]: # (![Alt Text - description of the image]&#40;url to the image you want to include&#41;)
